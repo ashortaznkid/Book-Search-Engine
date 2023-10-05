@@ -3,9 +3,13 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        me: async (parent, { _id}) => {
-            const params = _id ? { _id } : {};
-            return User.find(params);
+        me: async (parent, args, context) => {
+            if (context.user) {
+                const userData = await User.findOne({ _id: context.user._id }).select("-__v -password");
+                return userData;
+            }else {
+                return res.status(400).json({ message: 'No User found'});
+            }
         },
     },
     Mutation: {
@@ -45,7 +49,7 @@ const resolvers = {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { savedBooks: {bookId} } },
+                    { $pull: { savedBooks: {bookId: bookId} } },
                     { new: true}
                 );
                 return updatedUser;

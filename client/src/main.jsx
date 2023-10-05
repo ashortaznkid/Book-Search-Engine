@@ -1,11 +1,13 @@
-import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+import ReactDOM from 'react-dom/client';
+import React from 'react';
+//import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import App from './App.jsx'
-import SearchBooks from './pages/SearchBooks'
-import SavedBooks from './pages/SavedBooks'
-
+//import SearchBooks from './pages/SearchBooks'
+//import SavedBooks from './pages/SavedBooks'
+/*
 const router = createBrowserRouter([
   {
     path: '/',
@@ -21,8 +23,10 @@ const router = createBrowserRouter([
       }
     ]
   }
-])
+])*/
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <React.StrictMode>
+  <App />
+</React.StrictMode>,
 )

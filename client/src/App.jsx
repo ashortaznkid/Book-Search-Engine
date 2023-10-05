@@ -1,5 +1,5 @@
 import './App.css';
-import { Outlet } from 'react-router-dom';
+//import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
@@ -19,14 +19,9 @@ function App() {
         <>
         <Navbar />
         <Routes>
-          <Route 
-              path="/" 
-              component={SearchBooks}
-            />
-            <Route 
-              path="/saved" 
-              component={SavedBooks}
-            />
+          <Route exact path="/" component={SearchBooks}/>
+          <Route exact path="/saved" component={SavedBooks}/>
+          <Route render={() => <h1>Wrong Page!</h1>} />
         </Routes>
         </>
       </Router>
