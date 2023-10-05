@@ -16,8 +16,19 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <>
         <Navbar />
-        <Outlet />
+        <Routes>
+          <Route 
+              path="/" 
+              component={SearchBooks}
+            />
+            <Route 
+              path="/saved" 
+              component={SavedBooks}
+            />
+        </Routes>
+        </>
       </Router>
     </ApolloProvider>
   );
